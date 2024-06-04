@@ -18,7 +18,6 @@ func HandleInitQueue(c *gin.Context) {
 	queue.QueueId = uuid.New().String()
 	queue.IpAddress = c.ClientIP()
 	queue.BrowserId = c.GetHeader("User-Agent")
-	queue.IsPurchase = false
 	queue.EnteredAt = time.Now()
 
 	if err := queueService.Create(&queue); err != nil {
